@@ -1,0 +1,37 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "esmodules": true
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "helpers": true,
+        "regenerator": true
+      }
+    ]
+  ],
+  "comments": false,
+  "env": {
+    "production": {
+      "presets": [
+        [
+          "minify",
+          {
+            "builtIns": false,
+            "evaluate": false,
+            "mangle": false
+          }
+        ]
+      ]
+    }
+  }
+}
