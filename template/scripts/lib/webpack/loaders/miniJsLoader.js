@@ -39,7 +39,6 @@ module.exports = function(suffix) {
           ],
           "plugins": [
             ...(undefinedToVoid ? ['transform-undefined-to-void-fn'] : []),
-            "@babel/plugin-transform-modules-commonjs"
           ],
         },
       },
