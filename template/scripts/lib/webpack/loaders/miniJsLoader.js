@@ -31,12 +31,16 @@ module.exports = function(suffix) {
               "@babel/preset-env",
               {
                 "modules": false,
+                "targets": {
+                  "esmodules": false
+                },
               },
             ]
           ],
-          ...(undefinedToVoid ? {
-            plugins: ['transform-undefined-to-void-fn']
-          } : {}),
+          "plugins": [
+            ...(undefinedToVoid ? ['transform-undefined-to-void-fn'] : []),
+            "@babel/plugin-transform-modules-commonjs"
+          ],
         },
       },
     ],
