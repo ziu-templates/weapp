@@ -100,6 +100,7 @@ module.exports = function() {
             name: 'commons/style',
             chunks: 'all',
             minSize: 0,
+            maxSize: 300 * 1000,
             minChunks: 2,
           },
           vendor: {
@@ -107,6 +108,7 @@ module.exports = function() {
             name: 'commons/vendor',
             chunks: 'initial',
             minSize: 0,
+            maxSize: 300 * 1000,
             minChunks: 1,
           },
           commons: {
@@ -121,6 +123,7 @@ module.exports = function() {
             name: 'commons/commons',
             chunks: 'all',
             minSize: 0,
+            maxSize: 300 * 1000,
             minChunks: 2,
           },
         },
