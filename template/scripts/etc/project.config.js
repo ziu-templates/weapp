@@ -3,7 +3,7 @@ module.exports = {
   setting: {
     urlCheck: true,
     es6: true,
-    minified: true,
+    minified: false,
     postcss: true,
     uglifyFileName: true,
     newFeature: true,
