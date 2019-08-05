@@ -8,7 +8,7 @@ module.exports = {
     newFeature: true,
     nodeModules: true,
     autoAudits: false,
-    uglifyFileName: true,
+    uglifyFileName: false,
     checkInvalidKey: true
   }
 };
