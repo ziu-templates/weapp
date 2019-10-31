@@ -53,7 +53,17 @@
     "newFeature": true,
     "nodeModules": true,
     "autoAudits": false,
-    "uglifyFileName": false
+    "uglifyFileName": false,
+    "coverView": true,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "enhance": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "compileType": "miniprogram",
   "libVersion": "2.5.0",
