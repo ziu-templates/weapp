@@ -77,7 +77,7 @@
         "gulp": "^4.0.0",
         "lodash": "^4.17.11",
         "miniapp-auto-webpack-plugin": "^2.0.1",
-        "mini-function-plugin": "^1.0.2",
+        "mini-function-plugin": "^1.0.3",
         "minimist": "^1.2.0",
         "node-notifier": "^5.4.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
