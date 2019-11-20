@@ -4,6 +4,7 @@ const path = require('path'),
   StyleLintPlugin  = require('stylelint-webpack-plugin'),
   BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
   notifier = require('node-notifier'),
+  MiniFunctionPlugin = require('mini-function-plugin'),
   ICON = path.join(process.cwd(), 'scripts/logo.png'),
   ENV = process.env.PRJ_ENV,
   {envComp} = require('../utils'),
@@ -155,7 +156,8 @@ module.exports = function() {
       ...sourceMapPlugin(conf.sourceMap),
       ...miniCssPlugin(conf.cssSuffix),
       ...copyJsonPlugin(entryJsonFiles, codePath),
-      ...copyProjectConf
+      ...copyProjectConf,
+      new MiniFunctionPlugin(),
     ],
   };
   if (process.env.bundleAnalyzerReport) {
