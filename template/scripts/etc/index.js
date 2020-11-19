@@ -21,6 +21,7 @@ module.exports = {
   eslintSuffix: '(js|wxs)',
   miniJsSuffix: 'wxs',
   globalObject: 'global',
+  autoImportAppConfigPath: "src/outside",
   sourceMap: true,
   development: getPrjConfig({
     UglifyJs: false,

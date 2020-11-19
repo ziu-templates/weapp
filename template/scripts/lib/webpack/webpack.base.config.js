@@ -1,5 +1,5 @@
 const path = require('path'),
-  {getEntry, MiniappAutoPlugin} = require('miniapp-auto-webpack-plugin'),
+  {getEntry, MiniappAutoPlugin, getAppJson} = require('miniapp-auto-webpack-plugin'),
   FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'),
   StyleLintPlugin  = require('stylelint-webpack-plugin'),
   BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
@@ -32,6 +32,11 @@ module.exports = function() {
     cssSuffix: conf.cssSuffix,
     compileCssSuffix: conf.compileCssSuffix,
   });
+
+  const subsRoot = getSubsRoot(getAppJson({
+    autoImportAppConfigPath: conf.autoImportAppConfigPath,
+  }).subpackages);
+
   const webpackBaseConfig = {
     mode: process.env.NODE_ENV,
     entry,
@@ -118,12 +123,24 @@ module.exports = function() {
             test: function(module) {
               return (
                 module.resource &&
-                /\.js$/.test(module.resource) &&
+                /\.(js|ts)$/.test(module.resource) &&
                 module.resource.indexOf(
                   path.join(process.cwd(), 'src')
                 ) === 0);
             },
-            name: 'commons/commons',
+            name: function(module) {
+              const moduleName = module.identifier();
+              const result = subsRoot.filter((sub) => {
+                if (moduleName.includes(sub)) {
+                  return true;
+                }
+                return false;
+              });
+              if (result.length && result[0]) {
+                return `${result[0]}/commons/commons`
+              }
+              return 'commons/commons';
+            },
             chunks: 'all',
             minSize: 0,
             maxSize: 300 * 1000,
@@ -165,3 +182,15 @@ module.exports = function() {
   }
   return webpackBaseConfig;
 };
+
+function getSubsRoot(subs) {
+  if (!Array.isArray(subs)) {
+    return [];
+  }
+
+  const roots = subs.map((sub) => {
+    return sub.root;
+  });
+
+  return roots;
+}
