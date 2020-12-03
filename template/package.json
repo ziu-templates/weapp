@@ -80,6 +80,7 @@
         "optimize-css-assets-webpack-plugin": "^5.0.1",
         "node-sass": "^4.11.0",
         "ora": "^1.4.0",
+        "lodash.merge": "^4.6.2",
         "sass-loader": "^7.1.0",
         {{#gitCommitMsg}}
         "husky": "^1.3.1",
